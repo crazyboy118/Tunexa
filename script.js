@@ -74,12 +74,12 @@ function loadSong(index) {
 
 function playSong() {
   audio.play();
-  if (playPauseIcon) playPauseIcon.src = "player_icon3.png"; 
+  if (playPauseIcon) playPauseIcon.src = "player_icon6.png"; 
 }
 
 function pauseSong() {
   audio.pause();
-  if (playPauseIcon) playPauseIcon.src = "player_icon6.png"; 
+  if (playPauseIcon) playPauseIcon.src = "player_icon3.png"; 
 }
 
 function togglePlay() {
