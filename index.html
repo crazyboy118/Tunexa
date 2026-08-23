@@ -1,198 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tunexa - web player: Music for everyone</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="logo4.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="spotify.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tunexa - Music Player</title>
+  <link rel="stylesheet" href="spotify.css">
 </head>
 <body>
-    <div class="main">
-    <div class="sidebar">
-        <div class="nav">
-            <div class="nav-option" style="opacity:1">
-                <i class="fa-solid fa-house"></i>
-                <a href="#">home</a>
-            </div>
-       <div class="nav-option">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <a href="#">search</a> 
-       </div>
-    </div>
-    <div class="library">
-      <div class="option">
-        <div class="library-option nav-option" >
-            <img src="library_icon.png">
-            <a href="#">your library</a>
-        </div>
-        <div class="icons">
-            <i class="fa-solid fa-plus"></i>
-            <i class="fa-solid fa-arrow-right"></i>
-        </div>
-    </div>
-       <div class="lib-box">
-        <div class="box">
-            <p class="box-p1">create your first playlist</p><br>
-            <p class="box-p2">its easy, we'll help you</p><br>
-            <button class="badge">create playlist</button>
-            </div>
-         <div class="box">
-            <p class="box-p1">let's find some podcasts to fallow</p><br>
-            <p class="box-p2">we'll keep you updated on new episodes </p><br>
-            <button class="badge">Browse podcast</button>
-            </div>
-        </div>
-    </div>
- </div>
-    <div class="main-content">
-        <div class="sticky-nav">
-            <div class="sticky-nav-icons">
-                 <img src="backward_icon.png">
-                 <img src="forward_icon.png" class="hide">
-            </div>
-            <div class="sticky-nav-options">
-                <button class="badge nav-item hide" >Explore Premium</button>
-                <button class="badge nav-item dark-badge"><i class="fa-sharp fa-regular fa-circle-down" style="margin-right: 5px;"></i>Install App</button>
-                <i class="fa-regular fa-user nav-item"></i>
-            </div> 
-           </div>
-           <div class="cards">
-              <h2>Recently Played</h2>
-              <div class="cards-container">
-                <div class="card">
-                    <img src="card1img.jpeg" class="card-img">
-                    <p class="card-title">End OF BEGINNING</p>
-                    <p class="card-info">end of Begining-jeo kerry</p>
-              </div>
-            </div>
-    
-              <h2>Trending now near you</h2>
-              <div class="cards-container">
-                <div class="card">
-                    <img src="card2img.jpeg" class="card-img">
-                    <p class="card-title">GOLDEN BROWN</p>
-                    <p class="card-info">golden brown-The strangler</p>
-              </div>
-              <div class="card">
-                    <img src="card3img.jpeg" class="card-img">
-                    <p class="card-title">BELIEVER</p>
-                    <p class="card-info">believer-Imagine Dragons</p>
-              </div>
-              <div class="card">
-                    <img src="card4img.jpeg" class="card-img">
-                    <p class="card-title">BYE</p>
-                    <p class="card-info">bye-nsync</p>
-              </div>
-             <div class="card">
-                    <img src="card5img.jpeg" class="card-img">
-                    <p class="card-title">sapphire</p>
-                    <p class="card-info">sapphire-ed sheeran</p>
-              </div>
-             <div class="card">
-                    <img src="card6img.jpeg" class="card-img">
-                    <p class="card-title">BLINDING LIGHT</p>
-                    <p class="card-info">blinding light-weekend</p>
-              </div>
-              </div>
-              <h2>Featured class</h2>
-              <div class="cards-container">
-                <div class="card">
-                    <img src="card7img.jpeg" class="card-img">
-                    <p class="card-title">End OF BEGINNING</p>
-                    <p class="card-info">end of Begining-jeo kerry</p>
-              </div>
-              <div class="card">
-                    <img src="card8img.jpeg" class="card-img">
-                    <p class="card-title">GOLDEN BROWN</p>
-                    <p class="card-info">golden brown-The strangler</p>
-              </div>
-              <div class="card">
-                    <img src="card9img.jpeg" class="card-img">
-                    <p class="card-title">BELIEVER</p>
-                    <p class="card-info">believer-Imagine Dragons</p>
-              </div>
-              <div class="card">
-                    <img src="card10img.jpeg" class="card-img">
-                    <p class="card-title">BYE</p>
-                    <p class="card-info">bye-nsync</p>
-              </div>
-              <div class="card">
-                    <img src="card11img.jpeg" class="card-img">
-                    <p class="card-title">sapphire</p>
-                    <p class="card-info">sapphire-ed sheeran</p>
-              </div>
-        </div>
-         <h2>Chill</h2>
-              <div class="cards-container">
-                    <div class="card">
-                    <img src="card12img.jpeg" class="card-img">
-                    <p class="card-title">BLINDING LIGHT</p>
-                    <p class="card-info">blinding light-weekend</p>
-              </div>
-              <div class="card">
-                    <img src="card13img.jpeg" class="card-img">
-                    <p class="card-title">End OF BEGINNING</p>
-                    <p class="card-info">end of Begining-jeo kerry</p>
-              </div>
-              <div class="card">
-                    <img src="card14img.jpeg" class="card-img">
-                    <p class="card-title">GOLDEN BROWN</p>
-                    <p class="card-info">golden brown-The strangler</p>
-              </div>
-              </div>
-               <h2>Recent</h2>
-              <div class="cards-container">
-              <div class="card">
-                    <img src="card15img.jpeg" class="card-img">
-                    <p class="card-title">BELIEVER</p>
-                    <p class="card-info">eliever-Imagine Dragon</p>
-              </div>
-              <div class="card">
-                    <img src="card16img.jpeg" class="card-img">
-                    <p class="card-title">BYE</p>
-                    <p class="card-info">bye-nsync</p>
-              </div>
-              <div class="card">
-                    <img src="card17img.jpeg" class="card-img">
-                    <p class="card-title">sapphire</p>
-                    <p class="card-info">sapphire-ed sheeran</p>
-              </div>
-              <div class="card">
-                    <img src="card18img.jpeg" class="card-img">
-                    <p class="card-title">BLINDING LIGHT</p>
-                    <p class="card-info">blinding light-weekend</p>
-              </div>
-              </div>
 
-        <div class="footer">
-             <div class="line">
-             </div>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">Tunexa</div>
+
+      <nav class="main-nav">
+        <button class="nav-item active" id="nav-home">⌂ <span>Home</span></button>
+        <button class="nav-item" id="nav-search">⌕ <span>Search</span></button>
+        <button class="nav-item" id="nav-library">▤ <span>Your Library</span></button>
+      </nav>
+
+      <div class="sidebar-card">
+        <h3>Create your first playlist</h3>
+        <p>It's easy, we'll help you</p>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Let's find some podcasts to follow</h3>
+        <p>We'll keep you updated on new episodes</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div class="history">
+          <button id="back-btn">‹</button>
+          <button id="forward-btn">›</button>
         </div>
+        <div class="top-actions">
+          <button class="premium">Explore Premium</button>
+          <button class="install">Install App</button>
+          <span class="profile">●</span>
+        </div>
+      </header>
+
+      <section id="home-section">
+        <h1>Recently Played</h1>
+        <div class="cards-container" id="recent-cards">
+          <div class="card" data-song="0">
+            <img src="card1img.jpeg" class="card-img">
+            <p class="card-title">End of Beginning</p>
+            <p class="card-info">End of Beginning - jeo kerry</p>
+          </div>
+        </div>
+
+        <h2>Trending now near you</h2>
+        <div class="cards-container">
+          <div class="card" data-song="1">
+            <img src="card2img.jpeg" class="card-img">
+            <p class="card-title">Golden Brown</p>
+            <p class="card-info">Golden Brown - The Stranglers</p>
+          </div>
+
+          <div class="card" data-song="2">
+            <img src="card3img.jpeg" class="card-img">
+            <p class="card-title">Believer</p>
+            <p class="card-info">Believer - Imagine Dragons</p>
+          </div>
+
+          <div class="card" data-song="3">
+            <img src="card4img.jpeg" class="card-img">
+            <p class="card-title">Bye</p>
+            <p class="card-info">Bye - NSYNC</p>
+          </div>
+
+          <div class="card" data-song="4">
+            <img src="card5img.jpeg" class="card-img">
+            <p class="card-title">Sapphire</p>
+            <p class="card-info">Sapphire - Ed Sheeran</p>
+          </div>
+        </div>
+
+        <h2>Chill</h2>
+        <div class="cards-container">
+          <div class="card" data-song="5">
+            <img src="card12img.jpeg" class="card-img">
+            <p class="card-title">Blinding Lights</p>
+            <p class="card-info">Blinding Lights - The Weeknd</p>
+          </div>
+
+          <div class="card" data-song="0">
+            <img src="card13img.jpeg" class="card-img">
+            <p class="card-title">End of Beginning</p>
+            <p class="card-info">End of Beginning - jeo kerry</p>
+          </div>
+
+          <div class="card" data-song="1">
+            <img src="card14img.jpeg" class="card-img">
+            <p class="card-title">Golden Brown</p>
+            <p class="card-info">Golden Brown - The Stranglers</p>
+          </div>
+        </div>
+
+        <h2>Recent</h2>
+        <div class="cards-container">
+          <div class="card" data-song="2">
+            <img src="card15img.jpeg" class="card-img">
+            <p class="card-title">Believer</p>
+            <p class="card-info">Believer - Imagine Dragons</p>
+          </div>
+
+          <div class="card" data-song="3">
+            <img src="card16img.jpeg" class="card-img">
+            <p class="card-title">Bye</p>
+            <p class="card-info">Bye - NSYNC</p>
+          </div>
+
+          <div class="card" data-song="4">
+            <img src="card17img.jpeg" class="card-img">
+            <p class="card-title">Sapphire</p>
+            <p class="card-info">Sapphire - Ed Sheeran</p>
+          </div>
+
+          <div class="card" data-song="5">
+            <img src="card18img.jpeg" class="card-img">
+            <p class="card-title">Blinding Lights</p>
+            <p class="card-info">Blinding Lights - The Weeknd</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="search-section" class="hidden">
+        <h1>Search</h1>
+        <input id="search-input" class="search-input" type="text" placeholder="What do you want to play?">
+        <div id="search-results" class="cards-container"></div>
+      </section>
+
+      <section id="library-section" class="hidden">
+        <h1>Your Library</h1>
+        <p class="empty-text">Your liked songs and playlists will appear here.</p>
+      </section>
+    </main>
+  </div>
+
+  <div class="music-player">
+    <div class="now-playing">
+      <div class="album" id="album-art"></div>
+      <div>
+        <p class="np-title" id="np-title">Select a song</p>
+        <p class="np-artist" id="np-artist">Tunexa</p>
+      </div>
     </div>
-    <div class="music-player">
-        <div class="album"></div>
-        <div class="player">
-            <div class="player-controls">
-                  <img src="player_icon1.png" class="player-control-icon">
-                  <img src="player_icon2.png" class="player-control-icon">
-                  <img src="player icon3.png" class="player-control-icon" style="opacity: 1; height: 2rem">
-                  <img src="player_icon4.png" class="player-control-icon">
-                  <img src="player_icon5.png" class="player-control-icon">
-            </div>
-            <div class="playback-bar">
-                  <span class="curr-time">00:00</span>
-                  <input type="range" class="progress-bar" min="0" max="100" step="1"></input>
-                  <span class="total-time">3:33</span>
-            </div>
-        </div>
-        <div class="controls"></div>
-    </div> 
-</div>
-<script src="script.js"></script>
+
+    <div class="player">
+      <div class="player-controls">
+        <img src="player_icon1.png" class="player-control-icon" id="shuffle-icon" title="Shuffle">
+        <img src="player_icon2.png" class="player-control-icon" id="prev-icon" title="Previous">
+        <img src="player_icon3.png" class="player-control-icon play-icon" id="play-icon" title="Play/Pause">
+        <img src="player_icon4.png" class="player-control-icon" id="next-icon" title="Next">
+        <img src="player_icon5.png" class="player-control-icon" id="repeat-icon" title="Repeat">
+      </div>
+
+      <div class="playback-bar">
+        <span class="curr-time" id="curr-time">00:00</span>
+        <input type="range" class="progress-bar" id="progress-bar" min="0" max="100" value="0">
+        <span class="total-time" id="total-time">00:00</span>
+      </div>
+    </div>
+
+    <div class="volume">
+      <span>🔊</span>
+      <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="1">
+    </div>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <button id="modal-close" class="modal-close">×</button>
+      <h2 id="modal-title">Tunexa</h2>
+      <p id="modal-message">Coming soon.</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
