@@ -30,3 +30,9 @@ To run this project locally on your machine, follow these simple steps:
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/crazyboy118/Tunexa.git](https://github.com/crazyboy118/Tunexa.git)
+2. Navigate to the project directory:
+   Bash
+   cd Tunexa
+3. Open the application:
+Double-click on index.html to open it directly in your web browser, OR
+Use a live server extension (such as Live Server in Visual Studio Code) for the best development experience.
