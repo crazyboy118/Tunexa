@@ -65,10 +65,19 @@ function formatTime(seconds) {
 }
 
 function updatePlayIcon() {
-  if (!playPauseIcon) return;
-  playPauseIcon.classList.toggle("playing", !audio.paused);
-  playPauseIcon.style.transform = audio.paused ? "scale(1)" : "scale(1.12)";
+  if (!playPauseIcon)  return;
+
+playPauseIcon.Src = audio.paused
+   ? "player_icon3.png"
+   : "player_icon6.png";
+
+playPauseIcon.classlist.toggle("playing", !audio.paused);
 }
+
+audio.addEventListener("play", updatePlayIcon);
+audio.addEventListener("pause", updatePlayIcon);
+audio.addEventListener("ended", updatePlayIcon);
+
 
 function clearCardHighlights() {
   cards.forEach(card => card.classList.remove("playing"));
@@ -173,7 +182,7 @@ function showToast(message) {
   }, 1800);
 }
 
-// Player controls
+
 playPauseIcon?.addEventListener("click", togglePlay);
 nextIcon?.addEventListener("click", playNext);
 prevIcon?.addEventListener("click", playPrev);
@@ -190,7 +199,7 @@ repeatIcon?.addEventListener("click", () => {
   showToast(repeatActive ? "Repeat on" : "Repeat off");
 });
 
-// Cards
+
 cards.forEach((card, i) => {
   card.addEventListener("click", () => {
     const requestedIndex = Number(card.dataset.song);
@@ -203,7 +212,7 @@ cards.forEach((card, i) => {
   });
 });
 
-// Progress
+
 audio.addEventListener("loadedmetadata", () => {
   if (totalTimeEl) totalTimeEl.textContent = formatTime(audio.duration);
 });
@@ -242,7 +251,7 @@ audio.addEventListener("error", () => {
   showToast("MP3 load nahi hua — song file ka naam/path check karo.");
 });
 
-// Volume
+
 if (volumeBar) {
   audio.volume = Number(volumeBar.value);
 
@@ -251,7 +260,7 @@ if (volumeBar) {
   });
 }
 
-// Navigation
+
 const homeSection = document.querySelector("#home-section");
 const searchSection = document.querySelector("#search-section");
 const librarySection = document.querySelector("#library-section");
@@ -288,7 +297,7 @@ navLibrary?.addEventListener("click", () => {
   setActiveNav(navLibrary);
 });
 
-// Search
+
 const searchInput = document.querySelector("#search-input");
 const searchResults = document.querySelector("#search-results");
 
@@ -329,7 +338,7 @@ searchInput?.addEventListener("input", e => {
   renderSearchResults(e.target.value);
 });
 
-// Small buttons
+
 document.querySelector("#back-btn")?.addEventListener("click", () => history.back());
 document.querySelector("#forward-btn")?.addEventListener("click", () => history.forward());
 
@@ -341,7 +350,7 @@ document.querySelector(".install")?.addEventListener("click", () => {
   showToast("Tunexa app install — coming soon");
 });
 
-// Modal
+
 const modalOverlay = document.querySelector("#modal-overlay");
 const modalClose = document.querySelector("#modal-close");
 
@@ -353,7 +362,7 @@ modalOverlay?.addEventListener("click", e => {
   }
 });
 
-// Initial state
+
 loadSong(currentIndex);
 renderSearchResults("");
 setActiveNav(navHome);
