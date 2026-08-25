@@ -1,21 +1,18 @@
-# Tunexa 🎵
+# Tunexa
 
-A lightweight web music player inspired by Spotify with plain HTML, CSS, and JavaScript. Simple, fast, and runs right in the browser with no frameworks or dependencies needed.
+Spotify-inspired web music player.
 
 ## Features
-- Custom audio player with play, pause, seek, and track skip controls
-- Dark-mode layout inspired by Spotify
-- Dynamic track listing and DOM updates with vanilla JS
-- Fully responsive layout for desktop and mobile
+- Play, pause, skip, and seek controls
+- Dark-mode responsive layout
+- Dynamic track listing
 
 ## Built With
 - HTML5
 - CSS3
-- JavaScript (ES6+)
+- JavaScript
 
-## Quickstart
-
-Clone the repo and open `index.html` in your browser:
+## Run Locally
 
 ```bash
 git clone [https://github.com/crazyboy118/Tunexa.git](https://github.com/crazyboy118/Tunexa.git)
