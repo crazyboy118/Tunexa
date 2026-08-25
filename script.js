@@ -68,8 +68,8 @@ function updatePlayIcon() {
   if (!playPauseIcon)  return;
 
 playPauseIcon.src = audio.paused
-   ? "player_icon6.png"
-   : "player_icon3.png";
+   ? "player_icon3.png"
+   : "player_icon6.png";
 
 playPauseIcon.classList.toggle("playing", !audio.paused);
 }
