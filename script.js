@@ -112,7 +112,7 @@ function playSong() {
   if (promise && typeof promise.catch === "function") {
     promise.catch(error => {
       console.error("Tunexa audio error:", error);
-      showToast("Song file nahi mil rahi. MP3 path check karo.");
+      showToast("not found");
     });
   }
 
