@@ -67,11 +67,11 @@ function formatTime(seconds) {
 function updatePlayIcon() {
   if (!playPauseIcon)  return;
 
-playPauseIcon.Src = audio.paused
-   ? "player_icon3.png"
-   : "player_icon6.png";
+playPauseIcon.src = audio.paused
+   ? "player_icon6.png"
+   : "player_icon3.png";
 
-playPauseIcon.classlist.toggle("playing", !audio.paused);
+playPauseIcon.classList.toggle("playing", !audio.paused);
 }
 
 audio.addEventListener("play", updatePlayIcon);
