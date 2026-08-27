@@ -134,7 +134,16 @@
 
       <section id="library-section" class="hidden">
         <h1>Your Library</h1>
-        <p class="empty-text">Your liked songs and playlists will appear here.</p>
+
+        <h2>Liked Songs</h2>
+        <div class="cards-container" id="liked-songs-container">
+          <p class="empty-text">Songs you like will appear here.</p>
+        </div>
+
+        <h2>Playlists</h2>
+        <div class="cards-container" id="playlists-container">
+          <p class="empty-text">Your playlists will appear here.</p>
+        </div>
       </section>
     </main>
   </div>
@@ -179,6 +188,30 @@
   </div>
 
   <div id="toast" class="toast"></div>
+
+
+  <div id="playlist-modal-overlay" class="modal-overlay hidden">
+    <div class="playlist-modal">
+      <button id="playlist-modal-close" class="modal-close" type="button">×</button>
+
+      <h2>Create Playlist</h2>
+
+      <input
+        id="playlist-name-input"
+        class="playlist-name-input"
+        type="text"
+        placeholder="Playlist name"
+        maxlength="50"
+      >
+
+      <p class="playlist-select-label">Select songs</p>
+      <div id="playlist-song-picker" class="playlist-song-picker"></div>
+
+      <button id="playlist-modal-create" class="pill-btn playlist-create-btn" type="button">
+        Create Playlist
+      </button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

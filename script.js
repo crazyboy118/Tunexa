@@ -44,6 +44,9 @@ let currentIndex = 0;
 let shuffleActive = false;
 let repeatActive = false;
 
+let likedSongs = new Set(JSON.parse(localStorage.getItem("tunexa-likes") || "[]"));
+let playlists = JSON.parse(localStorage.getItem("tunexa-playlists") || "[]");
+
 const playerIcons = document.querySelectorAll(".player-control-icon");
 const progressBar = document.querySelector(".progress-bar");
 const currTimeEl = document.querySelector(".curr-time");
@@ -81,6 +84,159 @@ audio.addEventListener("ended", updatePlayIcon);
 
 function clearCardHighlights() {
   cards.forEach(card => card.classList.remove("playing"));
+}
+
+function saveLikes() {
+  localStorage.setItem("tunexa-likes", JSON.stringify([...likedSongs]));
+}
+
+function savePlaylists() {
+  localStorage.setItem("tunexa-playlists", JSON.stringify(playlists));
+}
+
+function isLiked(index) {
+  return likedSongs.has(index);
+}
+
+function refreshLikeButtons() {
+  document.querySelectorAll(".like-btn").forEach(btn => {
+    const index = Number(btn.dataset.likeIndex);
+    const liked = isLiked(index);
+    btn.textContent = liked ? "♥" : "♡";
+    btn.classList.toggle("liked", liked);
+  });
+}
+
+function toggleLike(index) {
+  if (likedSongs.has(index)) {
+    likedSongs.delete(index);
+  } else {
+    likedSongs.add(index);
+  }
+
+  saveLikes();
+  refreshLikeButtons();
+  renderLibrary();
+}
+
+function addLikeButton(card, index) {
+  if (!card || card.querySelector(".like-btn")) return;
+
+  const btn = document.createElement("button");
+  btn.className = "like-btn";
+  btn.type = "button";
+  btn.dataset.likeIndex = index;
+  btn.textContent = isLiked(index) ? "♥" : "♡";
+  if (isLiked(index)) btn.classList.add("liked");
+
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    toggleLike(index);
+  });
+
+  card.appendChild(btn);
+}
+
+function renderLibrary() {
+  const likedContainer = document.querySelector("#liked-songs-container");
+  const playlistsContainer = document.querySelector("#playlists-container");
+
+  if (likedContainer) {
+    likedContainer.innerHTML = "";
+    const likedIndices = [...likedSongs];
+
+    if (likedIndices.length === 0) {
+      likedContainer.innerHTML = `<p class="empty-text">Songs you like will appear here.</p>`;
+    } else {
+      likedIndices.forEach(index => {
+        const song = songs[index];
+        if (!song) return;
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.song = index;
+        card.innerHTML = `
+          <img src="${song.cover}" class="card-img">
+          <p class="card-title">${song.title}</p>
+          <p class="card-info">${song.artist}</p>
+        `;
+
+        card.addEventListener("click", () => {
+          currentIndex = index;
+          loadSong(currentIndex);
+          playSong();
+        });
+
+        addLikeButton(card, index);
+        likedContainer.appendChild(card);
+      });
+    }
+  }
+
+  if (playlistsContainer) {
+    playlistsContainer.innerHTML = "";
+
+    const addCard = document.createElement("button");
+    addCard.className = "card add-playlist-card";
+    addCard.type = "button";
+
+    const randomCover = songs[Math.floor(Math.random() * songs.length)]?.cover || "";
+
+    addCard.innerHTML = `
+      <div class="card-img add-playlist-icon" style="background-image:url('${randomCover}')"><span>+</span></div>
+      <p class="card-title">Create Playlist</p>
+      <p class="card-info">Pick songs to add</p>
+    `;
+    addCard.addEventListener("click", openPlaylistModal);
+    playlistsContainer.appendChild(addCard);
+
+    playlists.forEach(playlist => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const coverSongs = playlist.songs
+        .map(index => songs[index])
+        .filter(Boolean)
+        .slice(0, 4);
+
+      const coverImgs = coverSongs
+        .map(song => `<img src="${song.cover}">`)
+        .join("");
+
+      const coverClass = coverSongs.length > 1 ? "playlist-cover" : "playlist-cover single";
+
+      card.innerHTML = `
+        <div class="card-img ${coverClass}">${coverImgs}</div>
+        <p class="card-title">${playlist.name}</p>
+        <p class="card-info">${playlist.songs.length} song${playlist.songs.length === 1 ? "" : "s"}</p>
+      `;
+
+      card.addEventListener("click", () => {
+        if (!playlist.songs.length) return;
+        currentIndex = playlist.songs[0];
+        loadSong(currentIndex);
+        playSong();
+      });
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.className = "delete-playlist-btn";
+      deleteBtn.type = "button";
+      deleteBtn.title = "Remove playlist";
+      deleteBtn.textContent = "×";
+
+      deleteBtn.addEventListener("click", e => {
+        e.stopPropagation();
+        playlists = playlists.filter(p => p.id !== playlist.id);
+        savePlaylists();
+        renderLibrary();
+        showToast("Playlist removed");
+      });
+
+      card.appendChild(deleteBtn);
+
+      playlistsContainer.appendChild(card);
+    });
+  }
 }
 
 function loadSong(index) {
@@ -201,15 +357,83 @@ repeatIcon?.addEventListener("click", () => {
 
 
 cards.forEach((card, i) => {
-  card.addEventListener("click", () => {
-    const requestedIndex = Number(card.dataset.song);
-    currentIndex = Number.isFinite(requestedIndex)
-      ? requestedIndex % songs.length
-      : i % songs.length;
+  const requestedIndex = Number(card.dataset.song);
+  const index = Number.isFinite(requestedIndex) ? requestedIndex % songs.length : i % songs.length;
 
+  card.addEventListener("click", () => {
+    currentIndex = index;
     loadSong(currentIndex);
     playSong();
   });
+
+  addLikeButton(card, index);
+});
+
+const playlistModalOverlay = document.querySelector("#playlist-modal-overlay");
+const playlistModalClose = document.querySelector("#playlist-modal-close");
+const playlistSongPicker = document.querySelector("#playlist-song-picker");
+const playlistModalCreateBtn = document.querySelector("#playlist-modal-create");
+const playlistNameInput = document.querySelector("#playlist-name-input");
+
+function openPlaylistModal() {
+  if (!playlistModalOverlay || !playlistSongPicker) return;
+
+  if (playlistNameInput) {
+    playlistNameInput.value = "";
+  }
+
+  playlistSongPicker.innerHTML = songs.map((song, index) => `
+    <label class="song-picker-item">
+      <input type="checkbox" value="${index}">
+      <img src="${song.cover}" class="song-picker-thumb">
+      <span class="song-picker-info">
+        <span class="song-picker-title">${song.title}</span>
+        <span class="song-picker-artist">${song.artist}</span>
+      </span>
+    </label>
+  `).join("");
+
+  playlistModalOverlay.classList.remove("hidden");
+
+  setTimeout(() => {
+    playlistNameInput?.focus();
+  }, 0);
+}
+
+function closePlaylistModal() {
+  playlistModalOverlay?.classList.add("hidden");
+}
+
+playlistModalClose?.addEventListener("click", closePlaylistModal);
+
+playlistModalOverlay?.addEventListener("click", e => {
+  if (e.target === playlistModalOverlay) closePlaylistModal();
+});
+
+playlistModalCreateBtn?.addEventListener("click", () => {
+  const checked = playlistSongPicker
+    ? [...playlistSongPicker.querySelectorAll("input[type='checkbox']:checked")]
+    : [];
+
+  if (checked.length === 0) {
+    showToast("Select at least one song");
+    return;
+  }
+
+  const enteredName = playlistNameInput?.value.trim();
+  const playlistName = enteredName || `My Playlist #${playlists.length + 1}`;
+
+  const playlist = {
+    id: Date.now(),
+    name: playlistName,
+    songs: checked.map(cb => Number(cb.value))
+  };
+
+  playlists.push(playlist);
+  savePlaylists();
+  renderLibrary();
+  closePlaylistModal();
+  showToast(`Playlist "${playlistName}" created`);
 });
 
 
@@ -318,6 +542,7 @@ function renderSearchResults(query) {
   matches.forEach(({ song, index }) => {
     const card = document.createElement("div");
     card.className = "card";
+    card.dataset.song = index;
     card.innerHTML = `
       <img src="${song.cover}" class="card-img">
       <p class="card-title">${song.title}</p>
@@ -330,6 +555,7 @@ function renderSearchResults(query) {
       playSong();
     });
 
+    addLikeButton(card, index);
     searchResults.appendChild(card);
   });
 }
@@ -365,4 +591,5 @@ modalOverlay?.addEventListener("click", e => {
 
 loadSong(currentIndex);
 renderSearchResults("");
+renderLibrary();
 setActiveNav(navHome);
