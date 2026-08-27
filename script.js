@@ -374,6 +374,39 @@ const playlistModalClose = document.querySelector("#playlist-modal-close");
 const playlistSongPicker = document.querySelector("#playlist-song-picker");
 const playlistModalCreateBtn = document.querySelector("#playlist-modal-create");
 const playlistNameInput = document.querySelector("#playlist-name-input");
+const playlistSongSearch = document.querySelector("#playlist-song-search");
+
+function renderPlaylistSongPicker(query = "") {
+  if (!playlistSongPicker) return;
+
+  const selected = new Set(
+    [...playlistSongPicker.querySelectorAll("input[type='checkbox']:checked")]
+      .map(cb => Number(cb.value))
+  );
+
+  const q = query.trim().toLowerCase();
+
+  const matches = songs
+    .map((song, index) => ({ song, index }))
+    .filter(({ song }) =>
+      !q ||
+      song.title.toLowerCase().includes(q) ||
+      song.artist.toLowerCase().includes(q)
+    );
+
+  playlistSongPicker.innerHTML = matches.length
+    ? matches.map(({ song, index }) => `
+        <label class="song-picker-item">
+          <input type="checkbox" value="${index}" ${selected.has(index) ? "checked" : ""}>
+          <img src="${song.cover}" class="song-picker-thumb">
+          <span class="song-picker-info">
+            <span class="song-picker-title">${song.title}</span>
+            <span class="song-picker-artist">${song.artist}</span>
+          </span>
+        </label>
+      `).join("")
+    : `<p class="empty-text">No songs found.</p>`;
+}
 
 function openPlaylistModal() {
   if (!playlistModalOverlay || !playlistSongPicker) return;
@@ -382,16 +415,12 @@ function openPlaylistModal() {
     playlistNameInput.value = "";
   }
 
-  playlistSongPicker.innerHTML = songs.map((song, index) => `
-    <label class="song-picker-item">
-      <input type="checkbox" value="${index}">
-      <img src="${song.cover}" class="song-picker-thumb">
-      <span class="song-picker-info">
-        <span class="song-picker-title">${song.title}</span>
-        <span class="song-picker-artist">${song.artist}</span>
-      </span>
-    </label>
-  `).join("");
+  if (playlistSongSearch) {
+    playlistSongSearch.value = "";
+    playlistSongSearch.oninput = e => renderPlaylistSongPicker(e.target.value);
+  }
+
+  renderPlaylistSongPicker("");
 
   playlistModalOverlay.classList.remove("hidden");
 

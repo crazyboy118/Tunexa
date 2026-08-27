@@ -578,6 +578,25 @@ h2 {
   font-weight: 700;
 }
 
+.playlist-song-search {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #101319;
+  color: white;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.playlist-song-search:focus {
+  border-color: var(--accent);
+}
+
+.playlist-song-search::placeholder {
+  color: #858b95;
+}
+
 .playlist-song-picker {
   max-height: 43vh;
   overflow-y: auto;
