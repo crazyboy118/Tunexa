@@ -5,37 +5,37 @@ const songs = [
   {
     title: "End of Beginning",
     artist: "jeo kerry",
-    cover: "card1img.jpeg",
+    cover: "assets/card1img.jpeg",
     src: "song1.mp3"
   },
   {
     title: "Golden Brown",
     artist: "The Stranglers",
-    cover: "card2img.jpeg",
+    cover: "assets/card2img.jpeg",
     src: "song3.mp3"
   },
   {
     title: "Believer",
     artist: "Imagine Dragons",
-    cover: "card3img.jpeg",
+    cover: "assets/card3img.jpeg",
     src: "song4.mp3"
   },
   {
     title: "Bye",
     artist: "NSYNC",
-    cover: "card4img.jpeg",
+    cover: "assets/card4img.jpeg",
     src: "song2.mp3"
   },
   {
     title: "Sapphire",
     artist: "Ed Sheeran",
-    cover: "card5img.jpeg",
+    cover: "assets/card5img.jpeg",
     src: "song5.mp3"
   },
   {
     title: "Blinding Lights",
     artist: "The Weeknd",
-    cover: "card6img.jpeg",
+    cover: "assets/card6img.jpeg",
     src: "song6.mp3"
   }
 ];
