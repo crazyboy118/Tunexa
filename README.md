@@ -1,26 +1,16 @@
-# Tunexa
-
-# Tunexa - Web Music Player
-
-Tunexa is a lightweight, responsive web-based music player designed with a modern interface. It allows users to browse tracks, control playback, manage liked songs, and build custom playlists with persistent local storage.
-
-## Features
-
-* **Audio Playback:** Play, pause, skip, seek, repeat, and shuffle tracks seamlessly.
-* **Library & Playlists:** Create custom playlists and save liked songs locally using `localStorage`.
-* **Search Functionality:** Filter through the track library dynamically in real time.
-* **Organized Architecture:** Clean project structure separating assets into dedicated subfolders (`images`, `icons`, `audios`).
-
-## Built With
-
-| Category | Technologies |
-| --- | --- |
-| **Frontend** | HTML5, CSS3, JavaScript (ES6+) |
-| **Storage** | Browser `localStorage` API |
-| **Icons & Media** | Custom PNG assets and MP3 audio files |
-
-## Run Locally
-
-```bash
-git clone [https://github.com/crazyboy118/Tunexa.git](https://github.com/crazyboy118/Tunexa.git)
-cd Tunexa
+Tunexa
+Tunexa is a web-based music player designed to mimic the core features and dark interface of popular streaming platforms like Spotify. Built entirely from scratch, it serves as a practical frontend project to practice handling DOM manipulation, working with HTML5 audio APIs, and managing dynamic UI state using vanilla JavaScript. The application lets users listen to music tracks, organize their library, and keep their preferences saved directly within the browser without needing any external backend or framework setup.
+Features
+Play, pause, skip, shuffle, and repeat songs
+Search for songs by name or artist
+Like songs and save them to your library
+Create custom playlists (saves in browser storage)
+Folder Structure
+assets/audios/ : Song files (.mp3)
+assets/images/ : Cover images (.jpeg)
+assets/icons/ : Player icons (.png)
+index.html : HTML structure
+spotify.css : Styling
+script.js : Player logic
+How to Run
+Just download the whole project folder and open index.html in your browser.
