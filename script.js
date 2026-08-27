@@ -5,38 +5,38 @@ const songs = [
   {
     title: "End of Beginning",
     artist: "jeo kerry",
-    cover: "assets/card1img.jpeg",
-    src: "song1.mp3"
+    cover: "assets/images/card1img.jpeg",
+    src: "assets/audios/song1.mp3"
   },
   {
     title: "Golden Brown",
     artist: "The Stranglers",
-    cover: "assets/card2img.jpeg",
-    src: "song3.mp3"
+    cover: "assets/images/card2img.jpeg",
+    src: "assets/audios/song3.mp3"
   },
   {
     title: "Believer",
     artist: "Imagine Dragons",
-    cover: "assets/card3img.jpeg",
-    src: "song4.mp3"
+    cover: "assets/images/card3img.jpeg",
+    src: "assets/audios/song4.mp3"
   },
   {
     title: "Bye",
     artist: "NSYNC",
-    cover: "assets/card4img.jpeg",
-    src: "song2.mp3"
+    cover: "assets/images/card4img.jpeg",
+    src: "assets/audios/song2.mp3"
   },
   {
     title: "Sapphire",
     artist: "Ed Sheeran",
-    cover: "assets/card5img.jpeg",
-    src: "song5.mp3"
+    cover: "assets/images/card5img.jpeg",
+    src: "assets/audios/song5.mp3"
   },
   {
     title: "Blinding Lights",
     artist: "The Weeknd",
-    cover: "assets/card6img.jpeg",
-    src: "song6.mp3"
+    cover: "assets/images/card6img.jpeg",
+    src: "assets/audios/song6.mp3"
   }
 ];
 
@@ -68,13 +68,13 @@ function formatTime(seconds) {
 }
 
 function updatePlayIcon() {
-  if (!playPauseIcon)  return;
+  if (!playPauseIcon) return;
 
-playPauseIcon.src = audio.paused
-   ? "player_icon3.png"
-   : "player_icon6.png";
+  playPauseIcon.src = audio.paused
+    ? "assets/icons/player_icon3.png"
+    : "assets/icons/player_icon6.png";
 
-playPauseIcon.classList.toggle("playing", !audio.paused);
+  playPauseIcon.classList.toggle("playing", !audio.paused);
 }
 
 audio.addEventListener("play", updatePlayIcon);
